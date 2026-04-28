@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.upn.catatlari.WelcomeFragment"
+        android:name="com.upn.catatlari.view.auth.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -20,12 +20,12 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.upn.catatlari.LoginFragment"
+        android:name="com.upn.catatlari.view.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.upn.catatlari.RegisterFragment"
+        android:name="com.upn.catatlari.view.auth.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
 </navigation>

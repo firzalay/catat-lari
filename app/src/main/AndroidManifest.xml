@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CatatLari">
         <activity
-            android:name=".AuthActivity"
+            android:name=".view.activity.AuthActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="false" />
     </application>
 

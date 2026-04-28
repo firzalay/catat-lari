@@ -1,4 +1,4 @@
-package com.upn.catatlari
+package com.upn.catatlari.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

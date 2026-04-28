@@ -1,4 +1,4 @@
-package com.upn.catatlari
+package com.upn.catatlari.view.activity
 
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.upn.catatlari.R
+import com.upn.catatlari.model.User
 
 class MainActivity : AppCompatActivity() {
 

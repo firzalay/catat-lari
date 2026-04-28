@@ -1,9 +1,10 @@
-package com.upn.catatlari
+package com.upn.catatlari.view.run
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.upn.catatlari.databinding.ItemRunBinding
+import com.upn.catatlari.model.Run
 
 class RunAdapter() : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 

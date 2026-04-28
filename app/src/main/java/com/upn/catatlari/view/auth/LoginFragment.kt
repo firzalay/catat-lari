@@ -1,4 +1,4 @@
-package com.upn.catatlari
+package com.upn.catatlari.view.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.upn.catatlari.databinding.FragmentLoginBinding
+import com.upn.catatlari.model.User
+import com.upn.catatlari.view.activity.MainActivity
 
 class LoginFragment : Fragment() {
 
@@ -37,7 +39,7 @@ class LoginFragment : Fragment() {
                 else {
                     // berpindah ke MainActivity
                     val intent = Intent(requireContext(), MainActivity::class.java)
-                    intent.putExtra("user", User(email = emailUser, password= passwordUser))
+                    intent.putExtra("user", User(email = emailUser, password = passwordUser))
                     startActivity(intent)
                 }
             }

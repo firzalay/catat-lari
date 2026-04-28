@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.upn.catatlari.HomeFragment"
+        android:name="com.upn.catatlari.view.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,12 +17,12 @@
     </fragment>
     <fragment
         android:id="@+id/addRunFragment"
-        android:name="com.upn.catatlari.AddRunFragment"
+        android:name="com.upn.catatlari.view.run.AddRunFragment"
         android:label="fragment_add_run"
         tools:layout="@layout/fragment_add_run" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.upn.catatlari.ProfileFragment"
+        android:name="com.upn.catatlari.view.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

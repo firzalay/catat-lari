@@ -1,4 +1,4 @@
-package com.upn.catatlari
+package com.upn.catatlari.view.auth
 
 import android.os.Bundle
 import android.view.LayoutInflater
