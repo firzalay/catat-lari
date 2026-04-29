@@ -55,7 +55,7 @@ class RegisterFragment : Fragment() {
             when (state) {
                 is RegisterState.Loading -> {
                     binding.btnRegister.isEnabled = false
-                    // tampilkan progress jika ada: binding.progressBar.visibility = View.VISIBLE
+
                 }
                 is RegisterState.Success -> {
                     Toast.makeText(requireContext(), "Registrasi berhasil!", Toast.LENGTH_SHORT).show()

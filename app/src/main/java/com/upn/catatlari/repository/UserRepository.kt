@@ -21,4 +21,17 @@ class UserRepository(private val userDao: UserDao) {
         }
     }
 
+    suspend fun login(email: String, password: String): Result<User> {
+        return try {
+            val user = userDao.getUserByEmail(email)
+            when {
+                user == null -> Result.failure(Exception("Email tidak terdaftar"))
+                !PasswordHelper.verify(password, user.password) -> Result.failure(Exception("Password salah"))
+                else -> Result.success(user)
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
 }
