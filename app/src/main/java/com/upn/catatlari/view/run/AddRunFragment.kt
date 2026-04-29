@@ -1,5 +1,6 @@
 package com.upn.catatlari.view.run
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.upn.catatlari.databinding.FragmentAddRunBinding
 import com.upn.catatlari.model.Run
 import com.upn.catatlari.viewmodel.RunViewModel
+import java.util.Calendar
 
 class AddRunFragment : Fragment() {
 
@@ -35,6 +37,28 @@ class AddRunFragment : Fragment() {
 
             runViewModel.addRun(runInput)
             findNavController().popBackStack()
+        }
+
+        binding.etDate.setOnClickListener {
+
+            val calendar = Calendar.getInstance()
+
+            val datePicker = DatePickerDialog(
+                requireContext(),
+                { _, year, month, dayOfMonth ->
+
+                    // format tanggal
+                    val selectedDate = "$dayOfMonth/${month + 1}/$year"
+
+                    binding.etDate.setText(selectedDate)
+
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            )
+
+            datePicker.show()
         }
     }
 
