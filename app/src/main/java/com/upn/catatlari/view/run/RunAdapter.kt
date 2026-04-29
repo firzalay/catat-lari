@@ -23,9 +23,9 @@ class RunAdapter() : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
     inner class RunViewHolder(private val binding: ItemRunBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(run: Run) {
-            binding.txtRunDate.text = run.runDate
-            binding.txtRunDistance.text = "${run.runDuration} M"
-            binding.txtRunDuration.text = run.runDuration.toString()
+//            binding.txtRunDate.text = run.runDate
+//            binding.txtRunDistance.text = "${run.runDuration} M"
+//            binding.txtRunDuration.text = run.runDuration.toString()
         }
     }
 }

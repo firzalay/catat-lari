@@ -23,11 +23,8 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val user = (activity as MainActivity).user
-        binding.welcomingTxt.text = "Halo, ${user?.email}"
+        binding.welcomingTxt.text = "Halo, ${user?.name}"
 
-        binding.floatingBtnAddRun.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddRunFragment())
-        }
 
 
         val runAdapter = RunAdapter()

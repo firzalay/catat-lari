@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.CatatLari" parent="Base.Theme.CatatLari" />
+
+    <style name="ShapeAppearance.NoRadius" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+    </style>
 </resources>

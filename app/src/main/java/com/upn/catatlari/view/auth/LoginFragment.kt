@@ -43,7 +43,7 @@ class LoginFragment : Fragment() {
 
         // Tombol Login
         binding.btnLogin.setClickAnimation {
-            val email    = binding.etEmail.text.toString()
+            val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
             viewModel.login(email, password)
         }
@@ -55,13 +55,23 @@ class LoginFragment : Fragment() {
                 is LoginState.Loading -> {
                     binding.btnLogin.isEnabled = false
                 }
+
                 is LoginState.Success -> {
-                    Toast.makeText(requireContext(), "Selamat datang, ${state.user.name}!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Selamat datang, ${state.user.name}!",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                     val intent = Intent(requireContext(), MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // 👈 biar AuthActivity di-clear, user tidak bisa back
+
+                    intent.putExtra("user", state.user)
+
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
                     startActivity(intent)
                 }
+
                 is LoginState.Error -> {
                     binding.btnLogin.isEnabled = true
                     Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
