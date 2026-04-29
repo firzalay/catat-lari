@@ -27,25 +27,25 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loginBinding.btnLogin.setClickAnimation {
-            val emailUser = loginBinding.etEmail.text.toString()
-            val passwordUser = loginBinding.etPassword.text.toString()
-
-            if (emailUser.isEmpty() || passwordUser.isEmpty())
-                Toast.makeText(requireContext(), "Silahkan masukkan email/password, bro!", Toast.LENGTH_SHORT).show()
-            else {
-                // jika password salah, muncul pesan error
-                if (passwordUser != "123456")
-                    Toast.makeText(requireContext(), "Password Anda salah!", Toast.LENGTH_SHORT).show()
-                // jika password benar, maka berpindah ke MainActivity
-                else {
-                    // berpindah ke MainActivity
-                    val intent = Intent(requireContext(), MainActivity::class.java)
-                    intent.putExtra("user", User(email = emailUser, password = passwordUser))
-                    startActivity(intent)
-                }
-            }
-        }
+//        loginBinding.btnLogin.setClickAnimation {
+//            val emailUser = loginBinding.etEmail.text.toString()
+//            val passwordUser = loginBinding.etPassword.text.toString()
+//
+//            if (emailUser.isEmpty() || passwordUser.isEmpty())
+//                Toast.makeText(requireContext(), "Silahkan masukkan email/password, bro!", Toast.LENGTH_SHORT).show()
+//            else {
+//                // jika password salah, muncul pesan error
+//                if (passwordUser != "123456")
+//                    Toast.makeText(requireContext(), "Password Anda salah!", Toast.LENGTH_SHORT).show()
+//                // jika password benar, maka berpindah ke MainActivity
+//                else {
+//                    // berpindah ke MainActivity
+//                    val intent = Intent(requireContext(), MainActivity::class.java)
+//                    intent.putExtra("user", User(email = emailUser, password = passwordUser))
+//                    startActivity(intent)
+//                }
+//            }
+//        }
 
         loginBinding.tvRegister.setClickAnimation {
             findNavController().navigate(

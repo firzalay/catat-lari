@@ -1,0 +1,24 @@
+package com.upn.catatlari.repository
+
+import com.upn.catatlari.data.local.UserDao
+import com.upn.catatlari.model.User
+import com.upn.catatlari.utils.PasswordHelper
+
+class UserRepository(private val userDao: UserDao) {
+
+    suspend fun register(name: String, email: String, password: String): Result<Unit> {
+        return try {
+            val existingUser = userDao.getUserByEmail(email)
+            if (existingUser != null) {
+                Result.failure(Exception("Email sudah terdaftar"))
+            } else {
+                val hashedPassword = PasswordHelper.hash(password)
+                userDao.insertUser(User(name = name, email = email, password = hashedPassword))
+                Result.success(Unit)
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+}
