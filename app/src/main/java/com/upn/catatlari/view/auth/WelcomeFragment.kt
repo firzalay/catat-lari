@@ -23,15 +23,17 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnLogin.setOnClickListener {
-            findNavController().navigate(
-                WelcomeFragmentDirections.actionWelcomeFragmentToLoginFragment())
+        binding.btnContinue.setOnClickListener {
+            it.animate()
+                .scaleX(0.95f)
+                .scaleY(0.95f)
+                .setDuration(100)
+                .withEndAction {
+                    findNavController().navigate(
+                        WelcomeFragmentDirections.actionWelcomeFragmentToLoginFragment()
+                    )
+                }
         }
 
-        binding.btnSignup.setOnClickListener {
-            findNavController().navigate(
-                WelcomeFragmentDirections.actionWelcomeFragmentToRegisterFragment()
-            )
-        }
     }
 }

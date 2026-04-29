@@ -1,31 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.auth.WelcomeFragment">
+    android:background="#2E2E2E"
+    tools:context=".view.auth.LoginFragment">
 
-    <Button
-        android:id="@+id/btn_signup"
+    <!-- Full Screen Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainCard"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Daftar"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/btn_login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_height="0dp"
+        app:cardBackgroundColor="#000000"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+
+            <!-- Hero Section -->
+            <FrameLayout
+                android:id="@+id/topSection"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/formSection"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.78">
+
+                <!-- Background Image -->
+                <ImageView
+                    android:contentDescription="@string/running"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_running"
+                    android:scaleType="centerCrop" />
+
+                <!-- Dark Overlay -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#55000000" />
+
+                <!-- Text Content -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="45dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/track_your"
+                        android:textColor="#FFFFFF"
+                        android:textSize="42sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/inter" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/best_run"
+                        android:textColor="#FFFFFF"
+                        android:textSize="42sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/inter" />
+
+                    <TextView
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/track_your_running_progress_stay_healthy_and_reach_your_goals"
+                        android:textColor="#E8E8E8"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <!-- Bottom Button Section -->
+            <LinearLayout
+                android:id="@+id/formSection"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_bottom_rounded"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="28dp"
+                android:paddingBottom="20dp"
+                android:translationY="-28dp"
+                app:layout_constraintTop_toBottomOf="@id/topSection"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnContinue"
+                    android:layout_width="300dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/txtContinue"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:fontFamily="@font/inter"
+                    android:backgroundTint="#000000"
+                    app:cornerRadius="30dp" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

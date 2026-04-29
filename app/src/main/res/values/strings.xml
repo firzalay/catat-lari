@@ -2,4 +2,9 @@
     <string name="app_name">CatatLari</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="running">running</string>
+    <string name="track_your">Track your</string>
+    <string name="best_run">best run.</string>
+    <string name="track_your_running_progress_stay_healthy_and_reach_your_goals">Track your running progress, stay healthy, and reach your goals.</string>
+    <string name="txtContinue">Continue</string>
 </resources>
