@@ -1,23 +1,39 @@
 package com.upn.catatlari.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.upn.catatlari.data.local.AppDatabase
 import com.upn.catatlari.model.Run
+import com.upn.catatlari.repository.RunRepository
+import kotlinx.coroutines.launch
 
-class RunViewModel : ViewModel() {
-    val runList = listOf(
-        Run(runDate = "22 Mei 2026", runDistance = 1, runDuration = 3),
-        Run(runDate = "23 Mei 2026", runDistance = 1, runDuration = 3),
-        Run(runDate = "24 Mei 2026", runDistance = 1, runDuration = 3)
-    )
+class RunViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val runListLiveData = MutableLiveData(runList)
-    var runHistory : LiveData<List<Run>> = runListLiveData
+    private val repository: RunRepository
+
+    private val _runHistory = MutableLiveData<List<Run>>()
+    val runHistory: LiveData<List<Run>> = _runHistory
+
+    init {
+        val db = AppDatabase.getInstance(application)
+        repository = RunRepository(db.runDao())
+        loadRuns()
+    }
 
     fun addRun(run: Run) {
-        val currentList = runListLiveData.value.orEmpty().toMutableList()
-        currentList.add(run)
-        runListLiveData.value = currentList
+        viewModelScope.launch {
+            repository.addRun(run)
+            loadRuns()
+        }
+    }
+
+    private fun loadRuns() {
+        viewModelScope.launch {
+            val result = repository.getAllRuns()
+            result.onSuccess { _runHistory.postValue(it) }
+        }
     }
 }

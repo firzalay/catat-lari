@@ -4,15 +4,16 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
+import java.util.Date
 
 @Parcelize
 @Entity(tableName = "runs")
 data class Run(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val userId: Int,
-    val date: String,
-    val location: String,
-    val distanceKm: Double,
-    val durationMinutes: Int
+    val runTitle: String,
+    val runLocation: String,
+    val runDate: String,
+    val runDistance: Int,
+    val runDuration: Int
 ) : Parcelable
