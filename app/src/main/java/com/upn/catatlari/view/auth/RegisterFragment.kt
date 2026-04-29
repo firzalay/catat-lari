@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.upn.catatlari.databinding.FragmentRegisterBinding
+import com.upn.catatlari.utils.setClickAnimation
 
 class RegisterFragment : Fragment() {
 
@@ -17,5 +19,22 @@ class RegisterFragment : Fragment() {
 
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.tvRegister.setClickAnimation {
+            findNavController().navigate(
+                RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+            )
+        }
+
+        binding.btnRegister.setClickAnimation {
+            findNavController().navigate(
+                RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+            )
+        }
+    }
+
 
 }

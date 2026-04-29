@@ -33,6 +33,7 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <ImageView
+                    android:contentDescription="bg_login_register"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/bg_login_register"
