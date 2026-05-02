@@ -36,4 +36,11 @@ class RunViewModel(application: Application) : AndroidViewModel(application) {
             result.onSuccess { _runHistory.postValue(it) }
         }
     }
+
+    fun updateRun(run: Run) {
+        viewModelScope.launch {
+            repository.updateRun(run)
+            loadRuns()
+        }
+    }
 }

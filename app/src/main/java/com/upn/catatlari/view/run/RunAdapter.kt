@@ -7,7 +7,9 @@ import com.upn.catatlari.databinding.ItemRunBinding
 import com.upn.catatlari.model.Run
 import com.upn.catatlari.utils.formatRunDate
 
-class RunAdapter() : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
+class RunAdapter(
+    private val onItemClick: (Run) -> Unit
+) : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
     private var runList = mutableListOf<Run>()
 
@@ -16,6 +18,7 @@ class RunAdapter() : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
         runList.addAll(runItems)
         notifyItemRangeChanged(0, runItems.size)
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RunViewHolder =
         RunViewHolder(ItemRunBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
@@ -30,8 +33,10 @@ class RunAdapter() : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
             binding.tvLocation.text = run.runLocation
             binding.tvDistance.text = "${run.runDistance} km"
             binding.tvDuration.text = "${run.runDuration} menit"
+
+            binding.root.setOnClickListener {
+                onItemClick(run)
+            }
         }
-
-
     }
 }

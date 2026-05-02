@@ -22,4 +22,8 @@ class RunRepository(private val runDao: RunDao) {
             Result.failure(e)
         }
     }
+
+    suspend fun updateRun(run: Run) {
+        runDao.updateRun(run)
+    }
 }

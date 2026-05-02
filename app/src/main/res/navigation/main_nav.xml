@@ -14,15 +14,31 @@
         <action
             android:id="@+id/action_homeFragment_to_addRunFragment"
             app:destination="@id/addRunFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editRunFragment"
+            app:destination="@id/editRunFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/addRunFragment"
         android:name="com.upn.catatlari.view.run.AddRunFragment"
         android:label="fragment_add_run"
         tools:layout="@layout/fragment_add_run" />
+
+    <fragment
+        android:id="@+id/editRunFragment"
+        android:name="com.upn.catatlari.view.run.EditRunFragment"
+        android:label="fragment_edit_run"
+        tools:layout="@layout/fragment_edit_run">
+        <argument
+            android:name="run"
+            app:argType="com.upn.catatlari.model.Run" />
+    </fragment>
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.upn.catatlari.view.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
 </navigation>
