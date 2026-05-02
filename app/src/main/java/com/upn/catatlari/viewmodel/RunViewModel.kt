@@ -17,6 +17,9 @@ class RunViewModel(application: Application) : AndroidViewModel(application) {
     private val _runHistory = MutableLiveData<List<Run>>()
     val runHistory: LiveData<List<Run>> = _runHistory
 
+    private val _deleteStatus = MutableLiveData<Boolean?>()
+    val deleteStatus: LiveData<Boolean?> = _deleteStatus
+
     init {
         val db = AppDatabase.getInstance(application)
         repository = RunRepository(db.runDao())
@@ -42,5 +45,22 @@ class RunViewModel(application: Application) : AndroidViewModel(application) {
             repository.updateRun(run)
             loadRuns()
         }
+    }
+
+    fun deleteRun(run: Run) {
+        viewModelScope.launch {
+            val result = repository.deleteRun(run)
+            result.onSuccess {
+                loadRuns()
+                _deleteStatus.postValue(true)
+            }
+            result.onFailure {
+                _deleteStatus.postValue(false)
+            }
+        }
+    }
+
+    fun resetDeleteStatus() {
+        _deleteStatus.value = null
     }
 }

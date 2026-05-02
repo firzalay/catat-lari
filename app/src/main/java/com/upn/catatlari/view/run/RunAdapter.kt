@@ -8,7 +8,8 @@ import com.upn.catatlari.model.Run
 import com.upn.catatlari.utils.formatRunDate
 
 class RunAdapter(
-    private val onItemClick: (Run) -> Unit
+    private val onItemClick: (Run) -> Unit,
+    private val onDeleteClick: (Run) -> Unit
 ) : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
     private var runList = mutableListOf<Run>()
@@ -16,7 +17,7 @@ class RunAdapter(
     fun setData(runItems: List<Run>) {
         runList.clear()
         runList.addAll(runItems)
-        notifyItemRangeChanged(0, runItems.size)
+        notifyDataSetChanged() //
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RunViewHolder =
@@ -36,6 +37,10 @@ class RunAdapter(
 
             binding.root.setOnClickListener {
                 onItemClick(run)
+            }
+
+            binding.btnDelete.setOnClickListener {
+                onDeleteClick(run)
             }
         }
     }

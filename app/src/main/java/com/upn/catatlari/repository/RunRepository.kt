@@ -26,4 +26,13 @@ class RunRepository(private val runDao: RunDao) {
     suspend fun updateRun(run: Run) {
         runDao.updateRun(run)
     }
+
+    suspend fun deleteRun(run: Run): Result<Unit> {
+        return try {
+            runDao.deleteRun(run)
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }

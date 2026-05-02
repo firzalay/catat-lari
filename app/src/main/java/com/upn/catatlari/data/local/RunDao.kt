@@ -1,6 +1,7 @@
 package com.upn.catatlari.data.local
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -18,5 +19,8 @@ interface RunDao {
 
     @Update (onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateRun(run: Run)
+
+    @Delete
+    suspend fun deleteRun(run: Run)
 
 }

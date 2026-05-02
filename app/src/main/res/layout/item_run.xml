@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,15 +15,34 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- TITLE -->
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+        <!-- HEADER ROW: TITLE + DELETE BUTTON -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Morning Run"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Morning Run"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <!--DELETE BUTTON ICON -->
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="Hapus catatan"
+                app:tint="#E53935"/>
+
+        </LinearLayout>
 
         <!-- TIME -->
         <TextView
