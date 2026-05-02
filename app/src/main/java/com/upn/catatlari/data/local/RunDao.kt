@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.upn.catatlari.model.Run
+import androidx.room.Update
 
 @Dao
 interface RunDao {
@@ -14,5 +15,8 @@ interface RunDao {
 
     @Query("SELECT * FROM runs ORDER BY id DESC")
     suspend fun getAllRuns(): List<Run>
+
+    @Update (onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateRun(run: Run)
 
 }

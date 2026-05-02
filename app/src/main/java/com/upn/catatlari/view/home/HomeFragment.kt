@@ -15,28 +15,30 @@ import com.upn.catatlari.viewmodel.RunViewModel
 
 class HomeFragment : Fragment() {
 
-    private lateinit var  binding: FragmentHomeBinding
-    private val runViewModel : RunViewModel by activityViewModels()
+    private lateinit var binding: FragmentHomeBinding
+    private val runViewModel: RunViewModel by activityViewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val user = (activity as MainActivity).user
         binding.welcomingTxt.text = "Halo, ${user?.name}"
 
-
-
-        val runAdapter = RunAdapter()
-
-        binding.rvRunList.layoutManager = LinearLayoutManager(requireContext())
-        runViewModel.runHistory.observe(viewLifecycleOwner) {
-            runList -> runAdapter.setData(runList)
+        val runAdapter = RunAdapter { run ->
+            val action = HomeFragmentDirections.actionHomeFragmentToEditRunFragment(run)
+            findNavController().navigate(action)
         }
 
+        binding.rvRunList.layoutManager = LinearLayoutManager(requireContext())
         binding.rvRunList.adapter = runAdapter
+
+        runViewModel.runHistory.observe(viewLifecycleOwner) { runList ->
+            runAdapter.setData(runList)
+        }
 
         return binding.root
     }
-
 }
