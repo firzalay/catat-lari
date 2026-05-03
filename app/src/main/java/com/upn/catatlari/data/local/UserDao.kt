@@ -15,4 +15,13 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
     suspend fun getUserByEmail(email: String): User?
 
+    @Query("SELECT * FROM users WHERE id = :id LIMIT 1")
+    suspend fun getUserById(id: Int): User?
+
+    @Query("UPDATE users SET name = :name, email = :email, password = :password WHERE id = :id")
+    suspend fun updateUser(id: Int, name: String, email: String, password: String)
+
+    @Query("UPDATE users SET photoPath = :photoPath WHERE id = :id")
+    suspend fun updatePhotoPath(id: Int, photoPath: String?)
+
 }

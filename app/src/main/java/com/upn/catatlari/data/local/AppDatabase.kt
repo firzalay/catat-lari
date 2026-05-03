@@ -7,7 +7,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.upn.catatlari.model.Run
 import com.upn.catatlari.model.User
-@Database(entities = [User::class, Run::class], version = 5, exportSchema = false)
+@Database(entities = [User::class, Run::class], version = 6, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun runDao(): RunDao
@@ -18,6 +18,12 @@ abstract class AppDatabase : RoomDatabase() {
             override fun migrate(database: SupportSQLiteDatabase) {
             }
         }
+        private val MIGRATION_5_6 = object : Migration(5, 6) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                // Add photoPath column to users table
+                database.execSQL("ALTER TABLE users ADD COLUMN photoPath TEXT DEFAULT NULL")
+            }
+        }
         fun getInstance(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(
@@ -25,7 +31,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "catatlari_db"
                 )
-                    .addMigrations(MIGRATION_4_5) // ✅ Ganti destructive dengan migrasi aman
+                    .addMigrations(MIGRATION_4_5, MIGRATION_5_6)
                     .build()
                     .also { INSTANCE = it }
             }

@@ -34,4 +34,27 @@ class UserRepository(private val userDao: UserDao) {
         }
     }
 
+    suspend fun updateUser(id: Int, name: String, email: String, password: String): Result<User> {
+        return try {
+            userDao.updateUser(id, name, email, password)
+            val updatedUser = userDao.getUserById(id)
+            if (updatedUser != null) {
+                Result.success(updatedUser)
+            } else {
+                Result.failure(Exception("Gagal mengupdate user"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun updatePhotoPath(id: Int, photoPath: String?): Result<Unit> {
+        return try {
+            userDao.updatePhotoPath(id, photoPath)
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
 }
