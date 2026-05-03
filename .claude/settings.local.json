@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew build --warning-mode all)",
+      "Bash(where java)"
+    ]
+  }
+}
